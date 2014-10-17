@@ -20,8 +20,10 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'allure-rspec', '~> 0.6.5'
   spec.add_dependency 'nokogiri', '~> 1.6.3.1'
+  spec.add_dependency 'uuid', '~> 2.3.7'
   spec.add_development_dependency 'bundler', '~> 1.7'
   spec.add_development_dependency 'rake', '~> 10.3.2'
   spec.add_development_dependency 'rspec', '~> 3.1.0'
   spec.add_development_dependency 'guard-rspec', '~> 4.3.1'
+  spec.add_development_dependency 'selenium-webdriver', '~> 2.43.0'
 end

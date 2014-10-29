@@ -1,11 +1,16 @@
 require_relative 'selenium-reporter/config-checker'
+require_relative 'selenium-reporter/system/folder'
 require 'uuid'
 require 'rspec'
 
 class SeleniumReporter
 
+  attr_reader :output_dir
+
   def initialize
     ConfigChecker.new
+    make_absolute ENV['SE_OUTPUT_DIR']
+    System::Folder.prepare
     load_rspec_config
   end
 
@@ -33,8 +38,9 @@ class SeleniumReporter
       Dir.pwd
     end
 
-    def output_dir
-      File.join(pwd, ENV['SE_OUTPUT_DIR'])
+    def make_absolute(relative_path)
+      @output_dir = File.join(pwd, ENV['SE_OUTPUT_DIR'])
+      ENV['SE_OUTPUT_DIR'] = output_dir
     end
 
     def screenshot_dir

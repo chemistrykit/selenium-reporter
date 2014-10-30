@@ -1,0 +1,7 @@
+*.lock
+.*.swp
+.DS_Store
+spec/results
+tmp/
+results/
+pkg/

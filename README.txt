@@ -2,15 +2,38 @@
 
 == DESCRIPTION:
 
-Coming soon.
+A report helper, generator, and viewer for Selenium that displays failure screenshots and stacktraces in an HTML digest.
 
 == INSTALLATION:
 
-Coming soon.
+gem install selenium-reporter
 
 == USAGE:
 
-Coming soon.
+=== Environment Variables
+
+SE_OUTPUT_DIR (relative path to where you want to store screenshots and the final report)
+
+=== Capturing Screenshots
+
+ENV['SE_OUTPUT_DIR'] = 'results'
+reporter = SeleniumReporter.new
+driver = Selenium::WebDriver.for :firefox
+driver.save_screenshot(reporter.screenshot_file)
+
+NOTE: This will overwrite result output from previous test runs
+
+=== Generating a Report
+
+reporter.generate_report
+
+NOTE: This will generate an HTML report in a sub-directory within the output directory you specified
+
+=== Viewing a Report
+
+reporter.serve_report
+
+NOTE: This will start a local web server and make the final report available at http://localhost:4567
 
 == LICENSE:
 

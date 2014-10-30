@@ -14,8 +14,12 @@ class SeleniumReporter
 
       private
 
-        def exists?
+        def exist?
           File.directory?(ENV['SE_OUTPUT_DIR'])
+        end
+
+        def exists?
+          !Dir.glob(ENV['SE_OUTPUT_DIR'] + '/*').empty?
         end
 
         def create!
@@ -23,6 +27,10 @@ class SeleniumReporter
           FileUtils.mkdir_p(ENV['SE_OUTPUT_DIR'] + '/screenshot')
           FileUtils.mkdir_p(ENV['SE_OUTPUT_DIR'] + '/xml')
           FileUtils.mkdir_p(ENV['SE_OUTPUT_DIR'] + '/report')
+        end
+
+        def empty?
+          Dir.glob("#{ENV['SE_OUTPUT_DIR']}/*").empty?
         end
 
         def empty!

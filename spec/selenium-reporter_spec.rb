@@ -5,7 +5,7 @@ require 'typhoeus'
 describe 'selenium-reporter' do
 
   it 'provides a unique file with output directory' do
-    ENV['SE_OUTPUT_DIR'] = 'results'
+    ENV['SE_OUTPUT_DIR'] = 'spec/results'
     screenshot_file = SeleniumReporter.new.screenshot_file
     expect(screenshot_file).to include(ENV['SE_OUTPUT_DIR'])
     expect(screenshot_file).to include('.png')
